@@ -14,6 +14,7 @@ export default async function WorkContent() {
       .collection<WorkData>("work")
       .find()
       .limit(PREVIEW_WORK_COUNT)
+      .sort({ order: 1 })
       .toArray();
 
     const workData = works.map((work) => {

@@ -6,7 +6,11 @@ import type { WorkData } from "@/types/work";
 export default async function WorkContent() {
   try {
     const db = await getDatabase("mydata");
-    const works = await db.collection<WorkData>("work").find().toArray();
+    const works = await db
+      .collection<WorkData>("work")
+      .find()
+      .sort({ order: 1 })
+      .toArray();
 
     const workData = works.map((work) => {
       return {
